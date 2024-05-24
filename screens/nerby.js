@@ -101,9 +101,9 @@ const Nerby = ({ navigation }) => {
           height: windowHeight * 0.22,
           width: windowWidth * 0.8,
           borderRadius: 10,
-          backgroundColor: index === chooseItem ? "#DCCDE5" : "#FFFFFF",
+          backgroundColor: index === chooseItem ? "#a3a3a3" : "#FFFFFF",
           borderWidth: 2,
-          borderColor: "#A7A7A7",
+          borderColor: "#000000",
           marginHorizontal: 15,
           marginVertical: 20,
         }}
@@ -124,7 +124,7 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_700Bold",
               fontSize: 16,
-              color: "#5A1781",
+              color: "#000000",
             }}
           >
             {item.nama}

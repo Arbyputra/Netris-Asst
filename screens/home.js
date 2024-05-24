@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // paddingHorizontal: 20,
-    // paddingVertical: 20,
+    paddingVertical: 30,
     backgroundColor: "white",
   },
   containerMainMenu: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   containerMainBox: {
     width: "100%",
     height: 300,
-    backgroundColor: "#DCCDE5",
+    backgroundColor: "#a3a3a3",
     borderRadius: 15,
     paddingHorizontal: 20,
     paddingVertical: 20,
@@ -184,7 +184,7 @@ const Home = ({ navigation }) => {
             width: "100%",
             height: 80,
             borderRadius: 10,
-            backgroundColor: "#DCCDE5",
+            backgroundColor: "#a3a3a3",
           }}
         >
           <View
@@ -212,7 +212,7 @@ const Home = ({ navigation }) => {
                 <Text
                   style={{
                     fontFamily: "Inter_700Bold",
-                    color: "#5A1781",
+                    color: "#000000",
                     fontSize: 13,
                   }}
                 >
@@ -234,7 +234,7 @@ const Home = ({ navigation }) => {
             >
               <View
                 style={{
-                  backgroundColor: "#774494",
+                  backgroundColor: "#000000",
                   width: "80%",
                   height: "50%",
                   alignItems: "center",
@@ -242,7 +242,7 @@ const Home = ({ navigation }) => {
                   borderRadius: 10,
                 }}
               >
-                <Text style={{ color: "white" }}>lebih</Text>
+                <Text style={{ color: "white", fontFamily: "Inter_600SemiBold", fontSize: 13}}>Lihat</Text>
               </View>
             </View>
           </View>
@@ -256,7 +256,7 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.containerProfile}>
         <View style={{ flexDirection: "row" }}>
-          <Profile name={"Rizki"} />
+          <Profile name={"Farrel Ardan"} />
         </View>
         {/* <Carousel
           ref={carouselRef}
@@ -293,7 +293,7 @@ const Home = ({ navigation }) => {
             >
               <Button
                 left={false}
-                text={"Cari tambal ban"}
+                text={"Cari"}
                 op={() => navigation.navigate("Nerby")}
                 full={true}
               />
@@ -311,9 +311,9 @@ const Home = ({ navigation }) => {
             }}
           >
             <Text style={{ fontFamily: "Inter_600SemiBold", fontSize: 16 }}>
-              Seputar tambal ban
+              Tips
             </Text>
-            <Text style={{ fontFamily: "Inter_400Regular", fontSize: 12 }}>
+            <Text style={{ fontFamily: "Inter_400Regular", fontSize: 13 }}>
               Lihat semua
             </Text>
           </View>

@@ -86,14 +86,17 @@ const TabList = () => {
           );
         },
         tabBarStyle: {
-          height: 65,
-          paddingBottom: 8,
+          height: 75,
+          paddingTop:10,
+          paddingBottom: 10,
+          borderTopStartRadius: 40,
+          borderTopEndRadius: 40,
           backgroundColor: "#ffffff",
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#774494",
-        inactiveTintColor: "#C7C7C7",
+        activeTintColor: "#000000",
+        inactiveTintColor: "#a3a3a3",
       }}
     >
       <Tab.Screen
@@ -127,11 +130,7 @@ const CustomTabIcon = ({ name, focused, size, color }) => {
       {focused ? (
         <View
           style={{
-            width: "100%",
-            height: 7,
-            backgroundColor: "#774494",
-            borderBottomLeftRadius: 5,
-            borderBottomRightRadius: 5,
+            
           }}
         />
       ) : null}
