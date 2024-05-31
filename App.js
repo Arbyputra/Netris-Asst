@@ -89,9 +89,6 @@ const TabList = () => {
           height: 75,
           paddingTop:10,
           paddingBottom: 10,
-          borderTopStartRadius: 40,
-          borderTopEndRadius: 40,
-          backgroundColor: "#ffffff",
         },
       })}
       tabBarOptions={{
@@ -155,6 +152,7 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
+        
       >
         <Stack.Screen name={"Splash"} component={SplashScreen} />
         <Stack.Screen name={"Login"} component={Login} />
@@ -172,7 +170,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },

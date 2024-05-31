@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   containerMainBox: {
     width: "100%",
     height: 300,
-    backgroundColor: "#a3a3a3",
+    backgroundColor: "#E04D4D",
     borderRadius: 15,
     paddingHorizontal: 20,
     paddingVertical: 20,
@@ -184,7 +184,7 @@ const Home = ({ navigation }) => {
             width: "100%",
             height: 80,
             borderRadius: 10,
-            backgroundColor: "#a3a3a3",
+            backgroundColor: "#33961A",
           }}
         >
           <View
@@ -212,7 +212,7 @@ const Home = ({ navigation }) => {
                 <Text
                   style={{
                     fontFamily: "Inter_700Bold",
-                    color: "#000000",
+                    color: "white",
                     fontSize: 13,
                   }}
                 >
@@ -234,12 +234,14 @@ const Home = ({ navigation }) => {
             >
               <View
                 style={{
-                  backgroundColor: "#000000",
+                  backgroundColor: "#E5AD1B",
                   width: "80%",
                   height: "50%",
                   alignItems: "center",
                   justifyContent: "center",
                   borderRadius: 10,
+                  borderWidth: 2, 
+                  borderColor: "white", 
                 }}
               >
                 <Text style={{ color: "white", fontFamily: "Inter_600SemiBold", fontSize: 13}}>Lihat</Text>
@@ -300,7 +302,7 @@ const Home = ({ navigation }) => {
             </View>
           </View>
         </View>
-        <View style={{ flex: 1, paddingVertical: 20 }}>
+        <View style={{ flex: 1 }}>
           <Separator h={10} />
           <View
             style={{

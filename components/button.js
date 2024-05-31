@@ -3,13 +3,15 @@ import Icon from "react-native-vector-icons/AntDesign";
 import React from "react";
 
 const Button = (props) => {
+  const buttonBackgroundColor = props.backgroundColor || "#E5AD1B"; 
+
   return (
     <>
       {props.left === true ? (
         <TouchableOpacity
           onPress={props.op}
           style={{
-            backgroundColor: "#000000",
+            backgroundColor: buttonBackgroundColor,
             width: "95%",
             height: 50,
             justifyContent: "center",
@@ -46,7 +48,7 @@ const Button = (props) => {
         <TouchableOpacity
           onPress={props.op}
           style={{
-            backgroundColor: props.bgs === true ? "#a3a3a3" : "#000000",
+            backgroundColor: buttonBackgroundColor,
             width: props.full === true ? "100%" : "95%",
             height: 50,
             justifyContent: "center",
