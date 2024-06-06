@@ -114,7 +114,7 @@ const Nerby = ({ navigation }) => {
       id: 6,
       nama: "Tambal ban barokah",
       tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
+      alamat: "Jl jlan lah woi",
     },
   ];
 
@@ -257,7 +257,6 @@ const Nerby = ({ navigation }) => {
             />
           </View>
           <Button title="Save" onPress={saveRating} />
-          <Button title="Close" onPress={() => setModalVisible(false)} />
         </View>
       </Modal>
     </View>
