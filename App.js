@@ -92,8 +92,8 @@ const TabList = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#000000",
-        inactiveTintColor: "#a3a3a3",
+        activeTintColor: "#254336",
+        inactiveTintColor: "#6B8A7A",
       }}
     >
       <Tab.Screen

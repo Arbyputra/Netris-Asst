@@ -21,7 +21,7 @@ const Register = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "Inter_600SemiBold",
-            color: "#000000",
+            color: "#254336",
             fontSize: 50,
           }}
         >
@@ -64,7 +64,7 @@ const Register = ({ navigation }) => {
           <Text
             style={{
               fontFamily: "Inter_400Regular",
-              color: "#000000",
+              color: "#254336",
               fontSize: 15,
             }}
           >
@@ -74,7 +74,7 @@ const Register = ({ navigation }) => {
           <Text
             style={{
               fontFamily: "Inter_600SemiBold",
-              color: "#000000",
+              color: "#254336",
               fontSize: 16,
             }}
           >

@@ -20,7 +20,7 @@ import { Feather } from "@expo/vector-icons";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#875189",
+    backgroundColor: "#ffff",
   },
   searchBox: {
     position: "absolute",
@@ -63,36 +63,45 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    position: "relative",
+  },
+  closeButton: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    zIndex: 1,
   },
   button: {
     borderRadius: 15,
     padding: 10,
     elevation: 2,
-    backgroundColor: "#000",
+    backgroundColor: "#254336",
     position: "absolute",
     bottom: 10,
     right: 15,
   },
   buttonClose: {
-    backgroundColor: "#000000",
+    backgroundColor: "#254336",
     justifyContent: "center",
   },
   textStyle: {
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
-
     paddingHorizontal: 10,
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 10,
+    fontWeight: "bold",
     textAlign: "center",
+    fontSize: 18,
   },
   starContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 15,
+    padding: 30,
+    marginBottom: 10,
   },
 });
 
@@ -102,6 +111,7 @@ const Nerby = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [rating, setRating] = useState(0);
+  const [thankYouModalVisible, setThankYouModalVisible] = useState(false);
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -179,9 +189,11 @@ const Nerby = ({ navigation }) => {
           height: windowHeight * 0.22,
           width: windowWidth * 0.8,
           borderRadius: 10,
-          backgroundColor: index === chooseItem ? "#a3a3a3" : "#FFFFFF",
-          borderWidth: 1.5,
-          borderColor: "#000000",
+          backgroundColor: index === chooseItem ? "#DAD3BE" : "#FFFFFF",
+
+          shadowOffset: { width: 0, height: 3 },
+          shadowOpacity: 0.5,
+          shadowRadius: 2,
           marginHorizontal: 10,
           marginVertical: 25,
           borderRadius: 30,
@@ -292,6 +304,12 @@ const Nerby = ({ navigation }) => {
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
           <View style={styles.modalView}>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <FontAwesome name="close" size={24} color="black" />
+            </TouchableOpacity>
             <Text style={styles.modalText}>Rating Tambal Ban Kamu</Text>
             <View style={styles.starContainer}>
               {[1, 2, 3, 4, 5].map((star) => (
@@ -306,10 +324,33 @@ const Nerby = ({ navigation }) => {
             </View>
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+                // Show thank you modal
+                setThankYouModalVisible(true);
+                // Set timeout to close thank you modal after 2 seconds
+                setTimeout(() => {
+                  setThankYouModalVisible(false);
+                }, 2000);
+              }}
             >
               <Text style={styles.textStyle}>Rating</Text>
             </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        transparent={true}
+        visible={thankYouModalVisible}
+        onRequestClose={() => {
+          setThankYouModalVisible(!thankYouModalVisible);
+        }}
+      >
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Terima Kasih Atas Ulasan Anda</Text>
           </View>
         </View>
       </Modal>

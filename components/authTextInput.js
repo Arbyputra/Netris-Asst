@@ -5,7 +5,7 @@ import React from "react";
 const AuthTextInput = (props) => {
   return (
     <View style={{ width: "95%" }}>
-      <Text style={{ color: "#000000", fontFamily: "Inter_600SemiBold" }}>
+      <Text style={{ color: "#254336", fontFamily: "Inter_600SemiBold" }}>
         {props.label}
       </Text>
       <TextInput
@@ -13,12 +13,12 @@ const AuthTextInput = (props) => {
         mode="outlined"
         value={props.value}
         onChangeText={props.onChangeText}
-        outlineColor="#000000"
+        outlineColor="#254336"
         style={{ borderRadius: 20 }}
         theme={{
           roundness: 15,
           colors: {
-            primary: "#000000",
+            primary: "#B7B597",
             text: "black",
             placeholder: "gray",
             background: "#ffffff",
