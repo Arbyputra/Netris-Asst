@@ -12,6 +12,7 @@ import {
   Nerby,
   Home,
   ProfileScreen,
+  EditProfile,
 } from "./screens";
 import {
   Inter_400Regular,
@@ -22,6 +23,7 @@ import {
 import FlashMessage from "react-native-flash-message";
 import AppLoading from "expo-app-loading";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import EditProfil from "./screens/editprofile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -92,8 +94,8 @@ const TabList = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#000000",
-        inactiveTintColor: "#a3a3a3",
+        activeTintColor: "#254336",
+        inactiveTintColor: "#6B8A7A",
       }}
     >
       <Tab.Screen
@@ -156,7 +158,7 @@ export default function App() {
       >
         <Stack.Screen name={"Splash"} component={SplashScreen} />
         <Stack.Screen name={"Login"} component={Login} />
-        {/* <Stack.Screen name={"Home"} component={Home} /> */}
+        <Stack.Screen name={"EditProfil"} component={EditProfil} />
         <Stack.Screen name={"Register"} component={Register} />
         {/* <Stack.Screen name={"Nerby"} component={Nerby} /> */}
         <Stack.Screen name={"HomeTab"} component={TabList} />
