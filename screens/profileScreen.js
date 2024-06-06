@@ -11,10 +11,19 @@ const ProfileScreen = ({ navigation }) => {
       <Separator h={20} />
       <Button
         left={false}
+        text={"Ubah Profil"}
+        op={() => navigation.navigate("EditProfil")}
+        full={true}
+      />
+      <Separator h={20} />
+      
+      <Button
+        left={false}
         text={"Keluar"}
         op={() => navigation.navigate("Login")}
         full={true}
       />
+      
     </View>
   );
 };
