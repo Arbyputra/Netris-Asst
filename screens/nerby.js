@@ -7,6 +7,7 @@ import {
   Dimensions,
   Image,
   Button,
+  TextInput, // Tambahan
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import MapView from "react-native-maps";
@@ -42,6 +43,31 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
+  searchContainer: {
+    padding: 10,
+    borderColor: '#A7A7A7',
+    borderWidth: 1,
+    borderRadius: 5,
+    margin: 10,
+  },
+  searchInput: {
+    padding: 10,
+    borderColor: '#A7A7A7',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  searchHistoryContainer: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#A7A7A7',
+    borderWidth: 1,
+    borderRadius: 5,
+    maxHeight: 100,
+    marginTop: 5,
+    padding: 10,
+  },
+  searchHistoryItem: {
+    padding: 5,
+  }
 });
 
 const Nerby = ({ navigation }) => {
@@ -51,6 +77,8 @@ const Nerby = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [temporaryRating, setTemporaryRating] = useState(0);
+  const [searchText, setSearchText] = useState(""); // Tambahan
+  const [searchHistory, setSearchHistory] = useState([]); // Tambahan
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -74,48 +102,13 @@ const Nerby = ({ navigation }) => {
   const windowHeight = Dimensions.get("window").height;
 
   const listTambalBan = [
-    {
-      id: 0,
-      nama: "Tambal ban cak imin",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 1,
-      nama: "Tambal ban jetis kulon",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 2,
-      nama: "Tambal ban mas bro",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 3,
-      nama: "Tambal ban sis",
-      tipe: "Bengkel mobil",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 4,
-      nama: "Tambal ban pak dono",
-      tipe: "Bengkel mobil",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 5,
-      nama: "Tambal ban banjaya",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 6,
-      nama: "Tambal ban barokah",
-      tipe: "Bengkel motor",
-      alamat: "Jl jlan lah woi",
-    },
+    { id: 0, nama: "Tambal ban cak imin", tipe: "Bengkel motor", alamat: "Jl bareng cuma temen" },
+    { id: 1, nama: "Tambal ban jetis kulon", tipe: "Bengkel motor", alamat: "Jl bareng cuma temen" },
+    { id: 2, nama: "Tambal ban mas bro", tipe: "Bengkel motor", alamat: "Jl bareng cuma temen" },
+    { id: 3, nama: "Tambal ban sis", tipe: "Bengkel mobil", alamat: "Jl bareng cuma temen" },
+    { id: 4, nama: "Tambal ban pak dono", tipe: "Bengkel mobil", alamat: "Jl bareng cuma temen" },
+    { id: 5, nama: "Tambal ban banjaya", tipe: "Bengkel motor", alamat: "Jl bareng cuma temen" },
+    { id: 6, nama: "Tambal ban barokah", tipe: "Bengkel motor", alamat: "Jl jlan lah woi" },
   ];
 
   const handleRatingCompleted = (rating) => {
@@ -136,6 +129,13 @@ const Nerby = ({ navigation }) => {
     setSelectedItem(item);
     setTemporaryRating(ratings[item.id] || 0);
     setModalVisible(true);
+  };
+
+  const handleSearch = (text) => {
+    setSearchText(text);
+    if (text.trim().length > 0) {
+      setSearchHistory((prevHistory) => [text, ...prevHistory.filter(h => h !== text)]);
+    }
   };
 
   const renderItem = ({ item, index }) => {
@@ -226,11 +226,28 @@ const Nerby = ({ navigation }) => {
           style={{ width: "100%", height: "100%" }}
         />
       </View>
-      <View
-        style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}
-      >
+      <View style={{ flex: 1 }}>
+        <View style={styles.searchContainer}>
+          <TextInput
+            placeholder="Cari tambal ban..."
+            style={styles.searchInput}
+            value={searchText}
+            onChangeText={handleSearch}
+          />
+          {searchHistory.length > 0 && (
+            <View style={styles.searchHistoryContainer}>
+              {searchHistory.map((historyItem, index) => (
+                <TouchableOpacity key={index} onPress={() => setSearchText(historyItem)}>
+                  <Text style={styles.searchHistoryItem}>{historyItem}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+        </View>
         <FlatList
-          data={listTambalBan}
+          data={listTambalBan.filter(item => 
+            item.nama.toLowerCase().includes(searchText.toLowerCase())
+          )}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
           horizontal={true}
@@ -257,6 +274,7 @@ const Nerby = ({ navigation }) => {
             />
           </View>
           <Button title="Save" onPress={saveRating} />
+          <Button title="Close" onPress={() => setModalVisible(false)} />
         </View>
       </Modal>
     </View>
