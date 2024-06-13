@@ -35,7 +35,7 @@ const Profile = (props) => {
             fontSize: 13,
           }}
         >
-          Selamat Datamg Di Netris
+          Selamat Datang Di Netris-Asst
         </Text>
       </View>
     </>

@@ -23,7 +23,7 @@ import {
 import FlashMessage from "react-native-flash-message";
 import AppLoading from "expo-app-loading";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import EditProfil from "./screens/editprofile";
+// import EditProfil from "./screens/editprofile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
