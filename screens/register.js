@@ -21,13 +21,13 @@ const Register = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "Inter_600SemiBold",
-            color: "#774494",
-            fontSize: 35,
+            color: "#254336",
+            fontSize: 50,
           }}
         >
-          Sign Up
+          Daftar
         </Text>
-        <Text
+        {/* <Text
           style={{
             fontFamily: "Inter_400Regular",
             color: "#774494",
@@ -35,21 +35,21 @@ const Register = ({ navigation }) => {
           }}
         >
           Create account here
-        </Text>
+        </Text> */}
       </View>
-      <View style={{ flex: 3, alignItems: "center", justifyContent: "center" }}>
-        <AuthTextInput label={"Full Name"} ph={"Enter your name"} />
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <AuthTextInput label={"Nama Lengkap"} ph={"Masukan Nama"} />
         <Separator h={20} />
-        <AuthTextInput label={"Email"} ph={"Enter your email"} />
+        <AuthTextInput label={"Email"} ph={"Masukan Email"} />
         <Separator h={20} />
-        <PwdInput label={"Password"} />
+        <PwdInput label={"Kata Sandi"} />
         <Separator h={20} />
-        <PwdInput label={"Retype Password"} />
+        <PwdInput label={"Masukan Ulang Kata Sandi"} />
       </View>
       <View
-        style={{ flex: 1.6, justifyContent: "center", alignItems: "center" }}
+        style={{ flex: 1.6, justifyContent: "center", alignItems: "center"}}
       >
-        <Button left={false} text={"Register"} />
+        <Button left={false} text={"Daftar"} />
         <Separator h={15} />
         <TouchableOpacity
           onPress={() => {
@@ -64,21 +64,21 @@ const Register = ({ navigation }) => {
           <Text
             style={{
               fontFamily: "Inter_400Regular",
-              color: "#774494",
-              fontSize: 16,
+              color: "#254336",
+              fontSize: 15,
             }}
           >
-            Already have account?
+            Apakah sudah punya akun?
           </Text>
           <Separator w={4} />
           <Text
             style={{
               fontFamily: "Inter_600SemiBold",
-              color: "#774494",
+              color: "#254336",
               fontSize: 16,
             }}
           >
-            Sign in
+            Masuk
           </Text>
         </TouchableOpacity>
       </View>

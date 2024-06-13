@@ -16,39 +16,31 @@ const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View
-        style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}
+        style={{ flex: 2, justifyContent: "center", alignItems: "center" }}
       >
         <Text
           style={{
             fontFamily: "Inter_600SemiBold",
-            color: "#774494",
-            fontSize: 35,
+            color: "#000000",
+            fontSize: 50,
           }}
         >
-          Login
+          Masuk
         </Text>
-        <Text
-          style={{
-            fontFamily: "Inter_400Regular",
-            color: "#774494",
-            fontSize: 15,
-          }}
-        >
-          Enter your account to continue
-        </Text>
+        
       </View>
       <View
-        style={{ flex: 1.5, alignItems: "center", justifyContent: "center" }}
+        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
       >
-        <AuthTextInput label={"Email"} ph={"Enter your email"} />
+        <AuthTextInput label={"Email"} ph={"Masukkan E-Mail"}/>
         <Separator h={20} />
-        <PwdInput label={"Password"} />
+        <PwdInput label={"Kata Sandi"} />
         <Separator h={20} />
       </View>
-      <View style={{ flex: 3, justifyContent: "center", alignItems: "center" }}>
+      <View style={{ flex: 4, justifyContent: "center", alignItems: "center" }}>
         <Button
           left={false}
-          text={"Login"}
+          text={"Masuk"}
           op={() => navigation.navigate("HomeTab")}
         />
         <Separator h={15} />
@@ -56,17 +48,17 @@ const Login = ({ navigation }) => {
           style={{
             fontFamily: "Inter_400Regular",
             fontSize: 14,
-            color: "#774494",
+            color: "#737373",
           }}
         >
           Or
         </Text>
         <Separator h={15} />
-        <Button left={true} text={"Continue with Google"} iconName={"google"} />
+        <Button left={true} text={" Lanjutkan Dengan Google"} iconName={"google"} />
         <Separator h={20} />
         <Button
           left={true}
-          text={"Continue with Facebook"}
+          text={"Lanjutkan Dengan Facebook"}
           iconName={"facebook-square"}
         />
       </View>

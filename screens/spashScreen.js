@@ -50,7 +50,7 @@ const SplashScreen = ({ navigation }) => {
           dot={
             <View
               style={{
-                backgroundColor: "#C7B4D3",
+                backgroundColor: "#DAD3BE",
                 width: 8,
                 height: 8,
                 borderRadius: 4,
@@ -64,7 +64,7 @@ const SplashScreen = ({ navigation }) => {
           activeDot={
             <View
               style={{
-                backgroundColor: "#774494",
+                backgroundColor: "#6B8A7A",
                 width: 20,
                 height: 8,
                 borderRadius: 10,
@@ -88,25 +88,24 @@ const SplashScreen = ({ navigation }) => {
             <Separator h={15} />
             <Text
               style={{
-                color: "#774494",
+                color: "#254336",
                 fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
             >
-              Easy to use
+              Tambal Cepat, Lanjut Gas!
             </Text>
             <Separator h={10} />
             <View style={{ width: "75%" }}>
               <Text
                 style={{
-                  color: "#774494",
+                  color: "#254336",
                   fontSize: 14,
                   textAlign: "center",
                   fontFamily: "Inter_400Regular",
                 }}
               >
-                if a tire problem occurs, open your smartphone and find the
-                nearest tire repair shop
+                Jangan Biarkan Ban Bocor Menghentikan Anda, Temukan Solusi Sekarang!
               </Text>
             </View>
           </View>
@@ -119,25 +118,24 @@ const SplashScreen = ({ navigation }) => {
             <Separator h={15} />
             <Text
               style={{
-                color: "#774494",
+                color: "#254336",
                 fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
             >
-              Easy to use
+              Ban Bocor? 
             </Text>
             <Separator h={10} />
             <View style={{ width: "75%" }}>
               <Text
                 style={{
-                  color: "#774494",
+                  color: "#254336",
                   fontSize: 14,
                   textAlign: "center",
                   fontFamily: "Inter_400Regular",
                 }}
               >
-                if a tire problem occurs, open your smartphone and find the
-                nearest tire repair shop
+                Jangan Panik, Kami Ada Untuk Anda!
               </Text>
             </View>
           </View>
@@ -150,25 +148,24 @@ const SplashScreen = ({ navigation }) => {
             <Separator h={15} />
             <Text
               style={{
-                color: "#774494",
+                color: "#254336",
                 fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
             >
-              Easy to use
+              Tambal Cepat, Lanjut Gas!
             </Text>
             <Separator h={10} />
             <View style={{ width: "75%" }}>
               <Text
                 style={{
-                  color: "#774494",
+                  color: "#254336",
                   fontSize: 14,
                   textAlign: "center",
                   fontFamily: "Inter_400Regular",
                 }}
               >
-                if a tire problem occurs, open your smartphone and find the
-                nearest tire repair shop
+                Ketemu Tambal Ban dalam Sekejap, Perjalanan Anda Lanjut Tanpa Hambat!
               </Text>
             </View>
           </View>
@@ -191,14 +188,14 @@ const SplashScreen = ({ navigation }) => {
             style={{
               width: 110,
               height: "40%",
-              backgroundColor: "#774494",
+              backgroundColor: "#254336",
               justifyContent: "center",
               alignItems: "center",
               borderRadius: 30,
             }}
           >
-            <Text style={{ color: "white", fontFamily: "Inter_400Regular" }}>
-              get started
+            <Text style={{ color: "white", fontFamily: "Inter_600SemiBold" }}>
+              Lanjut
             </Text>
           </View>
         </TouchableOpacity>

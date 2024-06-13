@@ -12,6 +12,7 @@ import {
   Nerby,
   Home,
   ProfileScreen,
+  // EditProfile,
 } from "./screens";
 import {
   Inter_400Regular,
@@ -22,6 +23,7 @@ import {
 import FlashMessage from "react-native-flash-message";
 import AppLoading from "expo-app-loading";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+// import EditProfil from "./screens/editprofile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -86,14 +88,14 @@ const TabList = () => {
           );
         },
         tabBarStyle: {
-          height: 65,
-          paddingBottom: 8,
-          backgroundColor: "#ffffff",
+          height: 75,
+          paddingTop:10,
+          paddingBottom: 10,
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#774494",
-        inactiveTintColor: "#C7C7C7",
+        activeTintColor: "#254336",
+        inactiveTintColor: "#6B8A7A",
       }}
     >
       <Tab.Screen
@@ -127,11 +129,7 @@ const CustomTabIcon = ({ name, focused, size, color }) => {
       {focused ? (
         <View
           style={{
-            width: "100%",
-            height: 7,
-            backgroundColor: "#774494",
-            borderBottomLeftRadius: 5,
-            borderBottomRightRadius: 5,
+            
           }}
         />
       ) : null}
@@ -156,10 +154,11 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
+        
       >
         <Stack.Screen name={"Splash"} component={SplashScreen} />
         <Stack.Screen name={"Login"} component={Login} />
-        {/* <Stack.Screen name={"Home"} component={Home} /> */}
+        {/* <Stack.Screen name={"EditProfil"} component={EditProfil} /> */}
         <Stack.Screen name={"Register"} component={Register} />
         {/* <Stack.Screen name={"Nerby"} component={Nerby} /> */}
         <Stack.Screen name={"HomeTab"} component={TabList} />
@@ -173,7 +172,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
