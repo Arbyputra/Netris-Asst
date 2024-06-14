@@ -316,7 +316,7 @@ const Home = ({ navigation }) => {
               Tips
             </Text>
             <Text style={{ fontFamily: "Inter_400Regular", fontSize: 13 }}>
-              Lihat semua
+              DEVOPS
             </Text>
           </View>
           <Separator h={10} />

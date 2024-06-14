@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,14 +9,15 @@ import {
   Image,
   TextInput,
   Modal,
-  HStack,
+  Platform,
 } from "react-native";
-import { Separator } from "../components";
-import React, { useState, useEffect } from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import * as Location from "expo-location";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+
+// Custom component for separators
+const Separator = ({ h }) => <View style={{ height: h }} />;
 
 const styles = StyleSheet.create({
   container: {
@@ -112,6 +114,7 @@ const Nerby = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [rating, setRating] = useState(0);
   const [thankYouModalVisible, setThankYouModalVisible] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -190,7 +193,6 @@ const Nerby = ({ navigation }) => {
           width: windowWidth * 0.8,
           borderRadius: 10,
           backgroundColor: index === chooseItem ? "#DAD3BE" : "#FFFFFF",
-
           shadowOffset: { width: 0, height: 3 },
           shadowOpacity: 0.5,
           shadowRadius: 2,
@@ -252,43 +254,47 @@ const Nerby = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={{ flex: 3 }}>
-        <MapView
-          showsUserLocation={true}
-          showsCompass={true}
-          initialRegion={{
-            latitude: parseFloat(-7.3385169),
-            longitude: parseFloat(112.719163),
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1,
-          }}
-          style={{ width: "100%", height: "100%" }}
-        >
-          <View style={styles.searchBox}>
-            <TextInput
-              style={styles.input}
-              placeholder="Cari"
-              value={searchQuery}
-              onChangeText={(text) => setSearchQuery(text)}
-            />
-            <TouchableOpacity
-              style={styles.searchButton}
-              onPress={() => {
-                // handle search functionality here
-                console.log("Searching for:", searchQuery);
-              }}
-            >
-              <Feather name="search" size={24} color="black" />
-            </TouchableOpacity>
+        {currentLocation ? (
+          <MapView
+            showsUserLocation={true}
+            // showsCompass={true}
+            initialRegion={{
+              latitude: currentLocation.latitude,
+              longitude: currentLocation.longitude,
+              latitudeDelta: 0.1,
+              longitudeDelta: 0.1,
+            }}
+            style={{ width: "100%", height: "100%" }}
+          >
+            <View style={styles.searchBox}>
+              <TextInput
+                style={styles.input}
+                placeholder="Cari"
+                value={searchQuery}
+                onChangeText={(text) => setSearchQuery(text)}
+              />
+              <TouchableOpacity
+                style={styles.searchButton}
+                onPress={() => {
+                  // handle search functionality here
+                  console.log("Searching for:", searchQuery);
+                }}
+              >
+                <Feather name="search" size={24} color="black" />
+              </TouchableOpacity>
+            </View>
+          </MapView>
+        ) : (
+          <View style={{ width: "100%", height: "100%", justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Loading Map...</Text>
           </View>
-        </MapView>
+        )}
       </View>
-      <View
-        style={{ flex: 1.3, justifyContent: "center", alignItems: "center" }}
-      >
+      <View style={{ flex: 1.3, justifyContent: "center", alignItems: "center" }}>
         <FlatList
           data={listTambalBan}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />
@@ -296,13 +302,9 @@ const Nerby = ({ navigation }) => {
       <Modal
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
+        onRequestClose={() => setModalVisible(!modalVisible)}
       >
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
           <View style={styles.modalView}>
             <TouchableOpacity
               style={styles.closeButton}
@@ -310,14 +312,17 @@ const Nerby = ({ navigation }) => {
             >
               <FontAwesome name="close" size={24} color="black" />
             </TouchableOpacity>
-            <Text style={styles.modalText}>Rating Tambal Ban Kamu</Text>
+            <Text style={styles.modalText}>Ulas Lokasi</Text>
             <View style={styles.starContainer}>
-              {[1, 2, 3, 4, 5].map((star) => (
-                <TouchableOpacity key={star} onPress={() => setRating(star)}>
+              {Array.from({ length: 5 }, (_, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => setRating(index + 1)}
+                >
                   <FontAwesome
-                    name={star <= rating ? "star" : "star-o"}
-                    size={30}
-                    color="#ffd700"
+                    name={index < rating ? "star" : "star-o"}
+                    size={32}
+                    color="gold"
                   />
                 </TouchableOpacity>
               ))}
@@ -325,16 +330,11 @@ const Nerby = ({ navigation }) => {
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
-                setModalVisible(!modalVisible);
-                // Show thank you modal
                 setThankYouModalVisible(true);
-                // Set timeout to close thank you modal after 2 seconds
-                setTimeout(() => {
-                  setThankYouModalVisible(false);
-                }, 2000);
+                setModalVisible(false);
               }}
             >
-              <Text style={styles.textStyle}>Rating</Text>
+              <Text style={styles.textStyle}>Submit</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -342,15 +342,17 @@ const Nerby = ({ navigation }) => {
       <Modal
         transparent={true}
         visible={thankYouModalVisible}
-        onRequestClose={() => {
-          setThankYouModalVisible(!thankYouModalVisible);
-        }}
+        onRequestClose={() => setThankYouModalVisible(!thankYouModalVisible)}
       >
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Terima Kasih Atas Ulasan Anda</Text>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setThankYouModalVisible(!thankYouModalVisible)}
+            >
+              <FontAwesome name="close" size={24} color="black" />
+            </TouchableOpacity>
+            <Text style={styles.modalText}>Terima kasih atas ulasannya!</Text>
           </View>
         </View>
       </Modal>

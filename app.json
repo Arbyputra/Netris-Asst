@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Netris-Asst",
-    "slug": "NetrisApp",
+    "slug": "netristasst",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,7 +15,9 @@
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -29,10 +31,17 @@
         "googleMaps": {
           "apiKey": "AIzaSyA47i_0RjaPDgL631WIAGA9QcRzWMQfhCo"
         }
-      }
+      },
+      "package": "com.arbyputra.NetrisApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6b573607-6c42-416d-be21-4374442a2e97"
+      }
+    },
+    "owner": "arbyputra"
   }
 }
