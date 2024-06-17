@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
             color: "#737373",
           }}
         >
-          Or
+          Atau
         </Text>
         <Separator h={15} />
         <Button left={true} text={" Lanjutkan Dengan Google"} iconName={"google"} />

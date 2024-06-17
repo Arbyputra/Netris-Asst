@@ -3,7 +3,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 import React from "react";
 
 const Button = (props) => {
-  const buttonBackgroundColor = props.backgroundColor || "#E5AD1B"; 
+  const buttonBackgroundColor = props.backgroundColor || "#254336"; 
 
   return (
     <>

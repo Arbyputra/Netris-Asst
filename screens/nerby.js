@@ -3,24 +3,40 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  ScrollView,
   FlatList,
   Dimensions,
   Image,
   TextInput,
   Modal,
-  HStack,
 } from "react-native";
-import { Separator } from "../components";
+
+import { Separator} from "../components";
 import React, { useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
-import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#875189",
+    backgroundColor: "#ffffff",
+  },
+  button: {
+    borderRadius: 15,
+    padding: 10,
+    elevation: 2,
+    backgroundColor: "#254336",
+    position: "absolute",
+    bottom: 10,
+    right: 15,
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    paddingHorizontal: 10,
   },
   searchBox: {
     position: "absolute",
@@ -39,15 +55,28 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingStart: 25,
   },
+  searchButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 10,
+  },
   input: {
     flex: 4,
     padding: 0,
     margin: 0,
   },
-  searchButton: {
+  modalText: {
+    marginBottom: 10,
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 18,
+  },
+  starContainer: {
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 10,
+    padding: 30,
+    marginBottom: 10,
   },
   modalView: {
     margin: 20,
@@ -63,36 +92,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    position: "relative",
   },
-  button: {
-    borderRadius: 15,
-    padding: 10,
-    elevation: 2,
-    backgroundColor: "#000",
+  closeButton: {
     position: "absolute",
-    bottom: 10,
-    right: 15,
-  },
-  buttonClose: {
-    backgroundColor: "#000000",
-    justifyContent: "center",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-
-    paddingHorizontal: 10,
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-  starContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 15,
+    top: 10,
+    right: 10,
+    zIndex: 1,
   },
 });
 
@@ -102,6 +108,7 @@ const Nerby = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [rating, setRating] = useState(0);
+  const [thankYouModalVisible, setThankYouModalVisible] = useState(false);
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -119,7 +126,7 @@ const Nerby = ({ navigation }) => {
       }
     };
     fetchCurrentLocation();
-  }, []);
+  });
 
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
@@ -178,17 +185,17 @@ const Nerby = ({ navigation }) => {
         style={{
           height: windowHeight * 0.22,
           width: windowWidth * 0.8,
-          borderRadius: 10,
-          backgroundColor: index === chooseItem ? "#a3a3a3" : "#FFFFFF",
-          borderWidth: 1.5,
-          borderColor: "#000000",
+          // borderRadius: 10,
+          backgroundColor: index === chooseItem ? "#DCCDE5" : "#FFFFFF",
+          borderWidth: 2,
+          borderColor: "#A7A7A7",
           marginHorizontal: 10,
           marginVertical: 25,
           borderRadius: 30,
         }}
       >
         <View style={{ flex: 1 }}>
-          <Image
+        <Image
             style={{
               width: "100%",
               height: "100%",
@@ -203,7 +210,7 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_700Bold",
               fontSize: 16,
-              color: "#000000",
+              color: "#5A1781",
             }}
           >
             {item.nama}
@@ -213,6 +220,7 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_400Regular",
               fontSize: 12,
+              // color: "#774494",
             }}
           >
             {item.tipe}
@@ -222,6 +230,7 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_400Regular",
               fontSize: 12,
+              // color: "#774494",
             }}
           >
             {item.alamat}
@@ -251,14 +260,16 @@ const Nerby = ({ navigation }) => {
           }}
           style={{ width: "100%", height: "100%" }}
         >
-          <View style={styles.searchBox}>
+           
+        </MapView>
+        <View style={styles.searchBox}>
             <TextInput
               style={styles.input}
               placeholder="Cari"
               value={searchQuery}
               onChangeText={(text) => setSearchQuery(text)}
             />
-            <TouchableOpacity
+               <TouchableOpacity
               style={styles.searchButton}
               onPress={() => {
                 // handle search functionality here
@@ -267,8 +278,7 @@ const Nerby = ({ navigation }) => {
             >
               <Feather name="search" size={24} color="black" />
             </TouchableOpacity>
-          </View>
-        </MapView>
+            </View>
       </View>
       <View
         style={{ flex: 1.3, justifyContent: "center", alignItems: "center" }}
@@ -292,6 +302,12 @@ const Nerby = ({ navigation }) => {
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
           <View style={styles.modalView}>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <FontAwesome name="close" size={24} color="black" />
+            </TouchableOpacity>
             <Text style={styles.modalText}>Rating Tambal Ban Kamu</Text>
             <View style={styles.starContainer}>
               {[1, 2, 3, 4, 5].map((star) => (
@@ -306,10 +322,33 @@ const Nerby = ({ navigation }) => {
             </View>
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+                // Show thank you modal
+                setThankYouModalVisible(true);
+                // Set timeout to close thank you modal after 2 seconds
+                setTimeout(() => {
+                  setThankYouModalVisible(false);
+                }, 2000);
+              }}
             >
               <Text style={styles.textStyle}>Rating</Text>
             </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        transparent={true}
+        visible={thankYouModalVisible}
+        onRequestClose={() => {
+          setThankYouModalVisible(!thankYouModalVisible);
+        }}
+      >
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Terima Kasih Atas Ulasan Anda</Text>
           </View>
         </View>
       </Modal>

@@ -9,7 +9,7 @@ const PwdInput = (props) => {
   };
   return (
     <View style={{ width: "95%" }}>
-      <Text style={{ color: "#000000", fontFamily: "Inter_600SemiBold" }}>
+      <Text style={{ color: "#254336", fontFamily: "Inter_600SemiBold" }}>
         {props.label}
       </Text>
       <TextInput
@@ -17,7 +17,7 @@ const PwdInput = (props) => {
         placeholder="Masukan Kata Sandi"
         right={
           <TextInput.Icon
-            color={"#000000"}
+            color={"#254336"}
             onPress={togglePasswordVisibility}
             icon={showPassword ? "eye-off" : "eye"}
           />
@@ -25,12 +25,12 @@ const PwdInput = (props) => {
         mode="outlined"
         value={props.value}
         onChangeText={props.onChangeText}
-        outlineColor="#000000"
+        outlineColor="#254336"
         style={{ borderRadius: 20 }}
         theme={{
           roundness: 15,
           colors: {
-            primary: "#000000",
+            primary: "#254336",
             text: "black",
             placeholder: "gray",
             background: "#ffffff",

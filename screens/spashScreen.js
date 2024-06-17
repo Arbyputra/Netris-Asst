@@ -43,14 +43,14 @@ const SplashScreen = ({ navigation }) => {
           alignItems: "center",
         }}
       >
-        <NetrisLogo width="100%" height="100%" strokeWidth={6} />
+       <Image source={require("../assets/logonetrisasst.png")} />
       </View>
       <View style={{ flex: 5 }}>
         <Swiper
           dot={
             <View
               style={{
-                backgroundColor: "#a3a3a3",
+                backgroundColor: "#DAD3BE",
                 width: 8,
                 height: 8,
                 borderRadius: 4,
@@ -64,7 +64,7 @@ const SplashScreen = ({ navigation }) => {
           activeDot={
             <View
               style={{
-                backgroundColor: "#000000",
+                backgroundColor: "#6B8A7A",
                 width: 20,
                 height: 8,
                 borderRadius: 10,
@@ -88,7 +88,7 @@ const SplashScreen = ({ navigation }) => {
             <Separator h={15} />
             <Text
               style={{
-                color: "#000000",
+                color: "#254336",
                 fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
@@ -99,7 +99,7 @@ const SplashScreen = ({ navigation }) => {
             <View style={{ width: "75%" }}>
               <Text
                 style={{
-                  color: "#737373",
+                  color: "#254336",
                   fontSize: 14,
                   textAlign: "center",
                   fontFamily: "Inter_400Regular",
@@ -118,7 +118,7 @@ const SplashScreen = ({ navigation }) => {
             <Separator h={15} />
             <Text
               style={{
-                color: "#000000",
+                color: "#254336",
                 fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
@@ -129,7 +129,7 @@ const SplashScreen = ({ navigation }) => {
             <View style={{ width: "75%" }}>
               <Text
                 style={{
-                  color: "#737373",
+                  color: "#254336",
                   fontSize: 14,
                   textAlign: "center",
                   fontFamily: "Inter_400Regular",
@@ -148,7 +148,7 @@ const SplashScreen = ({ navigation }) => {
             <Separator h={15} />
             <Text
               style={{
-                color: "#000000",
+                color: "#254336",
                 fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
@@ -159,7 +159,7 @@ const SplashScreen = ({ navigation }) => {
             <View style={{ width: "75%" }}>
               <Text
                 style={{
-                  color: "#737373",
+                  color: "#254336",
                   fontSize: 14,
                   textAlign: "center",
                   fontFamily: "Inter_400Regular",
@@ -188,13 +188,13 @@ const SplashScreen = ({ navigation }) => {
             style={{
               width: 110,
               height: "40%",
-              backgroundColor: "#000000",
+              backgroundColor: "#254336",
               justifyContent: "center",
               alignItems: "center",
               borderRadius: 30,
             }}
           >
-            <Text style={{ color: "white", fontFamily: "Inter_400Regular" }}>
+            <Text style={{ color: "white", fontFamily: "Inter_600SemiBold" }}>
               Lanjut
             </Text>
           </View>
